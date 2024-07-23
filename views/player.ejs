@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Player</title>
+</head>
+<body>
+    <h1>Video Player</h1>
+    <div id="player-container">
+        <% if (videos.length > 0) { %>
+            <iframe id="player" width="560" height="315" src="<%= videos[0].link.replace('watch?v=', 'embed/') %>" frameborder="0" allowfullscreen></iframe>
+        <% } else { %>
+            <p>No videos in the queue</p>
+        <% } %>
+    </div>
+    <script>
+        let videos = <%= JSON.stringify(videos) %>;
+        let currentIndex = 0;
+
+        function playNext() {
+            currentIndex++;
+            if (currentIndex < videos.length) {
+                document.getElementById('player').src = videos[currentIndex].link.replace('watch?v=', 'embed/');
+            } else {
+                document.getElementById('player-container').innerHTML = '<p>No more videos in the queue</p>';
+            }
+        }
+
+        document.getElementById('player').addEventListener('ended', playNext);
+    </script>
+    <a href="/">Add More Videos</a>
+</body>
+</html>
