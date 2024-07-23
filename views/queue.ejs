@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Queue</title>
+</head>
+<body>
+    <h1>Video Queue</h1>
+    <ul>
+        <% videos.forEach(video => { %>
+            <li><%= video.link %></li>
+        <% }); %>
+    </ul>
+    <a href="/">Add More Videos</a>
+</body>
+</html>
